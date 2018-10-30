@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Plannery API v1</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -198,10 +198,10 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+      <script src="javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,14 +212,7 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
@@ -228,266 +221,507 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#versioning" class="toc-h1 toc-link" data-title="Versioning">Versioning</a>
+          </li>
+          <li>
+            <a href="#accounts" class="toc-h1 toc-link" data-title="Accounts">Accounts</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#create-a-new-user-account" class="toc-h2 toc-link" data-title="Create a new user account">Create a new user account</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#login-to-existing-user-account" class="toc-h2 toc-link" data-title="Login to existing user account">Login to existing user account</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#plaiditem" class="toc-h1 toc-link" data-title="PlaidItem">PlaidItem</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-new-plaid-item" class="toc-h2 toc-link" data-title="Create a new plaid item">Create a new plaid item</a>
+                  </li>
+                  <li>
+                    <a href="#get-plaid_item-linking-status" class="toc-h2 toc-link" data-title="Get plaid_item linking status">Get plaid_item linking status</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-plaid_items" class="toc-h2 toc-link" data-title="Get all plaid_items">Get all plaid_items</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#setting" class="toc-h1 toc-link" data-title="Setting">Setting</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#retrieve-settings-for-the-clients" class="toc-h2 toc-link" data-title="Retrieve settings for the clients">Retrieve settings for the clients</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#userprofile" class="toc-h1 toc-link" data-title="UserProfile">UserProfile</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#update-user-attributes" class="toc-h2 toc-link" data-title="Update user attributes">Update user attributes</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#userrealestate" class="toc-h1 toc-link" data-title="UserRealEstate">UserRealEstate</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-new-user_real_estate-instance" class="toc-h2 toc-link" data-title="Create a new user_real_estate instance">Create a new user_real_estate instance</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#waitlist" class="toc-h1 toc-link" data-title="WaitList">WaitList</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-new-waitlist-instance" class="toc-h2 toc-link" data-title="Create a new WaitList instance">Create a new WaitList instance</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>This is the API for the Plannery app. It provides methods to create and update user accounts, add linked plaid accounts and return financial plan data.</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<p>JSON is the only supported request and response format.</p>
+<h1 id='authentication'>Authentication</h1><pre class="highlight shell tab-shell"><code><span class="c"># With curl, supply the credentials with the -u option</span>
+curl <span class="s2">"https://prod.planneryapp.com/api/items"</span>
+  -u <span class="s2">"todd@packer.com:auth-token"</span>
 </code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
+<p>Some API methods require an authentication token, which is returned from the login and register methods. Tokens should be considered valid indefinitely, but can expire at any time.</p>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<p>The API expects credentials via HTTP Basic Authentication, with the user&#39;s email address as the username and the authentication token as the password.</p>
+<h1 id='versioning'>Versioning</h1><pre class="highlight shell tab-shell"><code>Accept: application/vnd.plannery.v1+json
 </code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
+<p>Use the Accept HTTP header to indicate the requested version of the API. At this time, the api will default to the most recent version. You should always specify the requested version.</p>
+<h1 id='accounts'>Accounts</h1><h2 id='create-a-new-user-account'>Create a new user account</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
+
+<span class="o">{</span>
+  <span class="s2">"first_name"</span>: <span class="s2">"Todd"</span>,
+  <span class="s2">"last_name"</span>: <span class="s2">"Packer"</span>,
+  <span class="s2">"email"</span>: <span class="s2">"todd@packer.com"</span>,
+  <span class="s2">"password"</span>: <span class="s2">"letmein"</span>,
+  <span class="s2">"phone_number"</span>: <span class="s2">"555-555-1234"</span>,
+<span class="o">}</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE</span>
+
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"authentication_token"</span>: <span class="s2">"abcd1234"</span>,
+  <span class="s2">"first_name"</span>: <span class="s2">"Todd"</span>,
+  <span class="s2">"last_name"</span>: <span class="s2">"Packer"</span>,
+  <span class="s2">"email"</span>: <span class="s2">"todd@packer.com"</span>,
+  <span class="s2">"phone_number"</span>: <span class="s2">"555-555-1234"</span>
+<span class="o">}</span>
+</code></pre>
+<p>This endpoint creates a new user account.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p><code>POST https://prod.planneryapp.com/api/user</code></p>
+<h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
+<td>email</td>
 <td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>The user&#39;s email address.</td>
+</tr>
+<tr>
+<td>password</td>
+<td>true</td>
+<td>The user&#39;s password.</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>true</td>
+<td>The user&#39;s first name.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>true</td>
+<td>The user&#39;s last name.</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>true</td>
+<td>The user&#39;s phone number. Should be nine digits. Formatting is stripped when saved.</td>
 </tr>
 </tbody></table>
+<h2 id='login-to-existing-user-account'>Login to existing user account</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<span class="o">{</span>
+  <span class="s2">"email"</span>: <span class="s2">"todd@packer.com"</span>,
+  <span class="s2">"password"</span>: <span class="s2">"letmein"</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"authentication_token"</span>: <span class="s2">"abcd1234"</span>,
+  <span class="s2">"first_name"</span>: <span class="s2">"Todd"</span>,
+  <span class="s2">"last_name"</span>: <span class="s2">"Packer"</span>,
+  <span class="s2">"email"</span>: <span class="s2">"todd@packer.com"</span>,
+  <span class="s2">"phone_number"</span>: <span class="s2">"555-555-1234"</span>,
+<span class="o">}</span>
 </code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint logs in to an existing user account. Each login will return a new authentication token, and the old authentication token will be invalidated.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p><code>POST https://prod.planneryapp.com/api/user/login</code></p>
+<h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>email</td>
+<td>true</td>
+<td>The user&#39;s email address.</td>
+</tr>
+<tr>
+<td>password</td>
+<td>true</td>
+<td>The user&#39;s password.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='plaiditem'>PlaidItem</h1><h2 id='create-a-new-plaid-item'>Create a new plaid item</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="o">{</span>
+  <span class="s2">"public_token"</span>: <span class="s2">"public-token-sandbox-1234556"</span>,
+<span class="o">}</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 1
+<span class="o">}</span>
 </code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
+<p>This endpoint creates a new plaid_item instance then asynchronously loads all the accounts and transactions from plaid.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<p><code>POST https://prod.planneryapp.com/api/plaid_items</code></p>
+<h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>public_token</td>
+<td>true</td>
+<td>This token should be retrieved from plaid link.</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
+<h2 id='get-plaid_item-linking-status'>Get plaid_item linking status</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
 
-<p>The Kittn API uses the following error codes:</p>
+<span class="o">{</span>
+  <span class="s2">"id"</span>: <span class="s2">"1"</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE IF ERROR</span>
 
+<span class="o">{</span>
+  <span class="s2">"title"</span>: <span class="s2">"Account Failed to Link"</span>
+  <span class="s2">"message"</span>: <span class="s2">"Please try again."</span>
+<span class="o">}</span>
+
+<span class="c"># EXAMPLE RESPONSE IF PENDING</span>
+
+<span class="o">{</span>
+  <span class="s2">"id"</span>: <span class="s2">"1"</span>
+<span class="o">}</span>
+
+<span class="c"># EXAMPLE RESPONSE IF SUCCESSFUL</span>
+
+<span class="o">{</span><span class="s2">"id"</span>: 4,
+ <span class="s2">"plaid_item_identifier"</span>: <span class="s2">"QbMJmZp94lfmJ7bEWEmmt7MkvPkXePtpMrzV1"</span>,
+ <span class="s2">"plaid_institution_identifier"</span>: <span class="s2">"ins_109508"</span>,
+ <span class="s2">"available_products"</span>:
+  <span class="o">[</span><span class="s2">"assets"</span>, <span class="s2">"auth"</span>, <span class="s2">"balance"</span>, <span class="s2">"credit_details"</span>, <span class="s2">"identity"</span><span class="o">]</span>,
+ <span class="s2">"plaid_accounts"</span>:
+ <span class="o">[{</span><span class="s2">"id"</span>: 26,
+    <span class="s2">"available_balance_in_dollars"</span>: 100.0,
+    <span class="s2">"current_balance_in_dollars"</span>: 110.0,
+    <span class="s2">"limit_balance_in_dollars"</span>: 0.0,
+    <span class="s2">"mask"</span>: <span class="s2">"0000"</span>,
+    <span class="s2">"name"</span>: <span class="s2">"Plaid Checking"</span>,
+    <span class="s2">"official_name"</span>: <span class="s2">"Plaid Gold Standard 0% Interest Checking"</span>,
+    <span class="s2">"account_subtype"</span>: <span class="s2">"checking"</span>,
+    <span class="s2">"account_type"</span>: <span class="s2">"depository"</span>,
+    <span class="s2">"interest_rate"</span>: 0.0<span class="o">}</span>,
+   <span class="o">{</span><span class="s2">"id"</span>: 27,
+    <span class="s2">"available_balance_in_dollars"</span>: 200.0,
+    <span class="s2">"current_balance_in_dollars"</span>: 210.0,
+    <span class="s2">"limit_balance_in_dollars"</span>: 0.0,
+    <span class="s2">"mask"</span>: <span class="s2">"1111"</span>,
+    <span class="s2">"name"</span>: <span class="s2">"Plaid Saving"</span>,
+    <span class="s2">"official_name"</span>: <span class="s2">"Plaid Silver Standard 0.1% Interest Saving"</span>,
+    <span class="s2">"account_subtype"</span>: <span class="s2">"savings"</span>,
+    <span class="s2">"account_type"</span>: <span class="s2">"depository"</span>,
+    <span class="s2">"interest_rate"</span>: 0.1<span class="o">}]}]</span>
+</code></pre>
+<p>This endpoint can be used to know when the linking phases has completed.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET  https://prod.planneryapp.com/api/plaid_items/:id/status</code></p>
+<h3 id='request-parameters-4'>Request Parameters</h3>
+<p>none</p>
+<h2 id='get-all-plaid_items'>Get all plaid_items</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE</span>
+
+<span class="o">{</span><span class="s2">"id"</span>: 4,
+ <span class="s2">"plaid_item_identifier"</span>: <span class="s2">"QbMJmZp94lfmJ7bEWEmmt7MkvPkXePtpMrzV1"</span>,
+ <span class="s2">"plaid_institution_identifier"</span>: <span class="s2">"ins_109508"</span>,
+ <span class="s2">"available_products"</span>:
+  <span class="o">[</span><span class="s2">"assets"</span>, <span class="s2">"auth"</span>, <span class="s2">"balance"</span>, <span class="s2">"credit_details"</span>, <span class="s2">"identity"</span><span class="o">]</span>,
+ <span class="s2">"plaid_accounts"</span>:
+ <span class="o">[{</span><span class="s2">"id"</span>: 26,
+    <span class="s2">"available_balance_in_dollars"</span>: 100.0,
+    <span class="s2">"current_balance_in_dollars"</span>: 110.0,
+    <span class="s2">"limit_balance_in_dollars"</span>: 0.0,
+    <span class="s2">"mask"</span>: <span class="s2">"0000"</span>,
+    <span class="s2">"name"</span>: <span class="s2">"Plaid Checking"</span>,
+    <span class="s2">"official_name"</span>: <span class="s2">"Plaid Gold Standard 0% Interest Checking"</span>,
+    <span class="s2">"account_subtype"</span>: <span class="s2">"checking"</span>,
+    <span class="s2">"account_type"</span>: <span class="s2">"depository"</span>,
+    <span class="s2">"interest_rate"</span>: 0.0<span class="o">}</span>,
+   <span class="o">{</span><span class="s2">"id"</span>: 27,
+    <span class="s2">"available_balance_in_dollars"</span>: 200.0,
+    <span class="s2">"current_balance_in_dollars"</span>: 210.0,
+    <span class="s2">"limit_balance_in_dollars"</span>: 0.0,
+    <span class="s2">"mask"</span>: <span class="s2">"1111"</span>,
+    <span class="s2">"name"</span>: <span class="s2">"Plaid Saving"</span>,
+    <span class="s2">"official_name"</span>: <span class="s2">"Plaid Silver Standard 0.1% Interest Saving"</span>,
+    <span class="s2">"account_subtype"</span>: <span class="s2">"savings"</span>,
+    <span class="s2">"account_type"</span>: <span class="s2">"depository"</span>,
+    <span class="s2">"interest_rate"</span>: 0.1<span class="o">}</span>,
+   <span class="o">{</span><span class="s2">"id"</span>: 28,
+    <span class="s2">"available_balance_in_dollars"</span>: 0.0,
+    <span class="s2">"current_balance_in_dollars"</span>: 1000.0,
+    <span class="s2">"limit_balance_in_dollars"</span>: 0.0,
+    <span class="s2">"mask"</span>: <span class="s2">"2222"</span>,
+    <span class="s2">"name"</span>: <span class="s2">"Plaid CD"</span>,
+    <span class="s2">"official_name"</span>: <span class="s2">"Plaid Bronze Standard 0.2% Interest CD"</span>,
+    <span class="s2">"account_subtype"</span>: <span class="s2">"cd"</span>,
+    <span class="s2">"account_type"</span>: <span class="s2">"depository"</span>,
+    <span class="s2">"interest_rate"</span>: 0.2<span class="o">}</span>,
+   <span class="o">{</span><span class="s2">"id"</span>: 29,
+    <span class="s2">"available_balance_in_dollars"</span>: 0.0,
+    <span class="s2">"current_balance_in_dollars"</span>: 410.0,
+    <span class="s2">"limit_balance_in_dollars"</span>: 2000.0,
+    <span class="s2">"mask"</span>: <span class="s2">"3333"</span>,
+    <span class="s2">"name"</span>: <span class="s2">"Plaid Credit Card"</span>,
+    <span class="s2">"official_name"</span>: <span class="s2">"Plaid Diamond 12.5% APR Interest Credit Card"</span>,
+    <span class="s2">"account_subtype"</span>: <span class="s2">"credit card"</span>,
+    <span class="s2">"account_type"</span>: <span class="s2">"credit"</span>,
+    <span class="s2">"interest_rate"</span>: 12.5<span class="o">}</span>,
+   <span class="o">{</span><span class="s2">"id"</span>: 30,
+    <span class="s2">"available_balance_in_dollars"</span>: 43200.0,
+    <span class="s2">"current_balance_in_dollars"</span>: 43200.0,
+    <span class="s2">"limit_balance_in_dollars"</span>: 0.0,
+    <span class="s2">"mask"</span>: <span class="s2">"4444"</span>,
+    <span class="s2">"name"</span>: <span class="s2">"Plaid Money Market"</span>,
+    <span class="s2">"official_name"</span>: <span class="s2">"Plaid Platinum Standard 1.85% Interest Money Market"</span>,
+    <span class="s2">"account_subtype"</span>: <span class="s2">"money market"</span>,
+    <span class="s2">"account_type"</span>: <span class="s2">"depository"</span>,
+    <span class="s2">"interest_rate"</span>: 1.85<span class="o">}]}]</span>
+</code></pre>
+<p>This endpoint retrieves all users linked plaid_items (which includes the plaid_accounts)</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET  https://prod.planneryapp.com/api/plaid_items</code></p>
+<h3 id='request-parameters-5'>Request Parameters</h3>
+<p>none</p>
+<h1 id='setting'>Setting</h1><h2 id='retrieve-settings-for-the-clients'>Retrieve settings for the clients</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE FOR AN AUTHENTICATED USER</span>
+
+<span class="o">{</span><span class="s2">"authenticated"</span>: <span class="nb">true</span>,
+ <span class="s2">"user"</span>:
+  <span class="o">{</span><span class="s2">"id"</span>: 7,
+   <span class="s2">"email"</span>: <span class="s2">"todd@plannery.com"</span>,
+   <span class="s2">"first_name"</span>: <span class="s2">"Todd"</span>,
+   <span class="s2">"last_name"</span>: <span class="s2">"Packer"</span>,
+   <span class="s2">"authentication_token"</span>: <span class="s2">"hp1zf7Q9Z49Qw1wWy2_x"</span>,
+   <span class="s2">"user_profile"</span>: nil,
+   <span class="s2">"user_real_estates"</span>: <span class="o">[]}</span>,
+ <span class="s2">"plan_goal_options"</span>: <span class="o">[</span><span class="s2">"reduce_debt"</span>, <span class="s2">"emergency_fund"</span><span class="o">]</span>,
+ <span class="s2">"plan_future_goal_options"</span>:
+  <span class="o">[</span><span class="s2">"save for a home"</span>,
+   <span class="s2">"plan for retirement"</span>,
+   <span class="s2">"improve credit score"</span>,
+   <span class="s2">"plan for sabatical"</span>,
+   <span class="s2">"save for vacation"</span><span class="o">]</span>,
+ <span class="s2">"credit_score_options"</span>:
+  <span class="o">[[</span>300, 550], <span class="o">[</span>550, 649], <span class="o">[</span>650, 699], <span class="o">[</span>700, 749], <span class="o">[</span>750, 850]],
+ <span class="s2">"terms_of_service_url"</span>: <span class="s2">"https://www.example.com/terms_of_service"</span><span class="o">}</span>
+
+ <span class="c"># EXAMPLE RESPONSE FOR AN UNAUTHENTICATED USER</span>
+ <span class="o">{</span><span class="s2">"authenticated"</span>: <span class="nb">false</span>,
+ <span class="s2">"user"</span>: nil,
+ <span class="s2">"plan_goal_options"</span>: <span class="o">[</span><span class="s2">"reduce_debt"</span>, <span class="s2">"emergency_fund"</span><span class="o">]</span>,
+ <span class="s2">"plan_future_goal_options"</span>:
+  <span class="o">[</span><span class="s2">"save for a home"</span>,
+   <span class="s2">"plan for retirement"</span>,
+   <span class="s2">"improve credit score"</span>,
+   <span class="s2">"plan for sabatical"</span>,
+   <span class="s2">"save for vacation"</span><span class="o">]</span>,
+ <span class="s2">"credit_score_options"</span>:
+  <span class="o">[[</span>300, 550], <span class="o">[</span>550, 649], <span class="o">[</span>650, 699], <span class="o">[</span>700, 749], <span class="o">[</span>750, 850]],
+ <span class="s2">"terms_of_service_url"</span>: <span class="s2">"https://www.example.com/terms_of_service"</span><span class="o">}</span>
+</code></pre>
+<p>This endpoint should be requested on each app load. The response includes the
+user attributes and whether or not their auth token is valid. If &#39;authenticated&#39; is false,
+then the client should force the login screen.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://prod.planneryapp.com/api/settings</code></p>
+<h3 id='request-parameters-6'>Request Parameters</h3>
+<p>none</p>
+<h1 id='userprofile'>UserProfile</h1><h2 id='update-user-attributes'>Update user attributes</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
+
+<span class="o">{</span>
+  <span class="s2">"credit_score"</span>: 700,
+  <span class="s2">"zip_code"</span>: <span class="s2">"94115"</span>,
+  <span class="s2">"gross_income_in_dollars"</span>: 80000,
+  <span class="s2">"retirement_percent_matching"</span>: 0.0
+<span class="o">}</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE</span>
+
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"credit_score"</span>: 700,
+  <span class="s2">"zip_code"</span>: <span class="s2">"94115"</span>,
+  <span class="s2">"gross_income_in_dollars"</span>: 80000,
+  <span class="s2">"retirement_percent_matching"</span>: 0.0
+<span class="o">}</span>
+</code></pre>
+<p>This endpoint allows us to save additional information about a user. These
+attributes will be editable from the settings page.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>PUT https://prod.planneryapp.com/api/user_profile</code></p>
+<h3 id='request-parameters-7'>Request Parameters</h3>
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>credit_score</td>
+<td>true</td>
+<td>The credit_score should be the average of the range</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>zip_code</td>
+<td>false</td>
+<td>The zip code for users that rent.</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>gross_income_in_dollars</td>
+<td>false</td>
+<td>The user&#39;s gross yearly income</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>retirement_percent_matching</td>
+<td>false</td>
+<td>The 401k matching offered by employer</td>
+</tr>
+</tbody></table>
+<h1 id='userrealestate'>UserRealEstate</h1><h2 id='create-a-new-user_real_estate-instance'>Create a new user_real_estate instance</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
+
+<span class="o">{</span>
+  <span class="s2">"street_address"</span>: <span class="s2">"2315 Bush Street"</span>,
+  <span class="s2">"apt_number"</span>: 6,
+  <span class="s2">"city"</span>: <span class="s2">"San Francisco"</span>,
+  <span class="s2">"state"</span>: <span class="s2">"CA"</span>,
+  <span class="s2">"zip"</span>: 94115
+<span class="o">}</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE</span>
+
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 2,
+  <span class="s2">"street_address"</span>: <span class="s2">"2315 Bush Street"</span>,
+  <span class="s2">"apt_number"</span>: 6,
+  <span class="s2">"city"</span>: <span class="s2">"San Francisco"</span>,
+  <span class="s2">"state"</span>: <span class="s2">"CA"</span>,
+  <span class="s2">"zip"</span>: 94115
+  <span class="s2">"zestimate_amount_in_dollars"</span>: 1777167
+<span class="o">}</span>
+</code></pre>
+<p>This endpoint allows users to add real estate holdings. After the user real estate
+instance is created, we then ping zillow to get the current property value (i.e. Zestimate)</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>POST https://prod.planneryapp.com/api/user_real_estates</code></p>
+<h3 id='request-parameters-8'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>street_address</td>
+<td>true</td>
+<td>The street address</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>apt_number</td>
+<td>false</td>
+<td>The apartment number</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+<td>state</td>
+<td>true</td>
+<td>The state</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td>zip</td>
+<td>true</td>
+<td>The zip code</td>
+</tr>
+</tbody></table>
+<h1 id='waitlist'>WaitList</h1><h2 id='create-a-new-waitlist-instance'>Create a new WaitList instance</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
+
+<span class="o">{</span>
+  <span class="s2">"email"</span>: <span class="s2">"todd@packer.com"</span>,
+  <span class="s2">"goal"</span>: <span class="s2">"save for a house"</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE</span>
+
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 1
+<span class="o">}</span>
+</code></pre>
+<p>This allows users to sign up for a waitlist to be notified when we support their desired financial goal.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST https://prod.planneryapp.com/api/waitlist</code></p>
+<h3 id='request-parameters-9'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>true</td>
+<td>The user&#39;s email address.</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>goal</td>
+<td>true</td>
+<td>The user&#39;s desired goal.</td>
 </tr>
 </tbody></table>
 
@@ -495,9 +729,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
