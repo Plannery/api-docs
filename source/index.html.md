@@ -301,12 +301,13 @@ none
    "authentication_token": "hp1zf7Q9Z49Qw1wWy2_x",
    "user_profile": nil,
    "user_real_estates": []},
+ "plaid_public_token": "access-sandbox-7cb00b31-6ba0-4d42-97ad",
  "plan_goal_options": ["reduce_debt", "emergency_fund"],
  "plan_future_goal_options":
   ["save for a home",
    "plan for retirement",
    "improve credit score",
-   "plan for sabatical",
+   "plan for sabbatical",
    "save for vacation"],
  "credit_score_options":
   [[300, 550], [550, 649], [650, 699], [700, 749], [750, 850]],
@@ -315,12 +316,13 @@ none
  # EXAMPLE RESPONSE FOR AN UNAUTHENTICATED USER
  {"authenticated": false,
  "user": nil,
+ "plaid_public_token": "access-sandbox-7cb00b31-6ba0-4d42-97ad",
  "plan_goal_options": ["reduce_debt", "emergency_fund"],
  "plan_future_goal_options":
   ["save for a home",
    "plan for retirement",
    "improve credit score",
-   "plan for sabatical",
+   "plan for sabbatical",
    "save for vacation"],
  "credit_score_options":
   [[300, 550], [550, 649], [650, 699], [700, 749], [750, 850]],
