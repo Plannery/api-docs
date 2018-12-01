@@ -442,6 +442,82 @@ Parameter | Required | Description
 --------- | -------- | -----------
 none
 
+# PlanInstruction
+
+## Show a plan instruction
+
+```shell
+# EXAMPLE REQUEST
+{}
+```
+
+```shell
+# EXAMPLE RESPONSE
+
+{
+   "id": 12,
+   "instruction_type": "reduce_spending",
+   "title": "reduce monthly expenses by $2,821.25",
+   "details": "Your cash flow is still negative, Find savings by comparing your expenses to others in your area.",
+   "number_of_months": nil,
+   "net_worth_increase_in_cents": 3476888,
+   "net_worth_decrease_explanation": nil,
+   "completed": true,
+   "instruction_items": [],
+   "recommended_financial_product": nil,
+   "other_financial_products": []
+},
+```
+
+This endpoint returns a plan instruction
+
+### HTTP Request
+
+`GET https://prod.planneryapp.com/api/plan_instructions/12`
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+none
+
+## Complete a plan instruction
+
+```shell
+# EXAMPLE REQUEST
+{}
+```
+
+```shell
+# EXAMPLE RESPONSE
+
+{
+   "id": 12,
+   "instruction_type": "reduce_spending",
+   "title": "reduce monthly expenses by $2,821.25",
+   "details": "Your cash flow is still negative, Find savings by comparing your expenses to others in your area.",
+   "number_of_months": nil,
+   "net_worth_increase_in_cents": 3476888,
+   "net_worth_decrease_explanation": nil,
+   "completed": true,
+   "instruction_items": [],
+   "recommended_financial_product": nil,
+   "other_financial_products": []
+},
+```
+
+This allows a user to complete a plan instruction
+
+### HTTP Request
+
+`PUT https://prod.planneryapp.com/api/plan_instructions/12/complete`
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+none
+
 # Setting
 
 ## Retrieve settings for the clients
