@@ -249,6 +249,17 @@
               </ul>
           </li>
           <li>
+            <a href="#plan" class="toc-h1 toc-link" data-title="Plan">Plan</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-financial-plan" class="toc-h2 toc-link" data-title="Create a financial plan">Create a financial plan</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-user-39-s-current-financial-plan" class="toc-h2 toc-link" data-title="Get a user's current financial plan">Get a user's current financial plan</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#setting" class="toc-h1 toc-link" data-title="Setting">Setting</a>
               <ul class="toc-list-h2">
                   <li>
@@ -261,6 +272,14 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#update-user-attributes" class="toc-h2 toc-link" data-title="Update user attributes">Update user attributes</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#useaccounts" class="toc-h1 toc-link" data-title="UseAccounts">UseAccounts</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-new-user_account" class="toc-h2 toc-link" data-title="Create a new user_account">Create a new user_account</a>
                   </li>
               </ul>
           </li>
@@ -293,7 +312,7 @@
 
 <p>JSON is the only supported request and response format.</p>
 <h1 id='authentication'>Authentication</h1><pre class="highlight shell tab-shell"><code><span class="c"># With curl, supply the credentials with the -u option</span>
-curl <span class="s2">"https://prod.planneryapp.com/api/items"</span>
+curl <span class="s2">"https://prod.planneryapp.com/api/plans/current"</span>
   -u <span class="s2">"todd@packer.com:auth-token"</span>
 </code></pre>
 <p>Some API methods require an authentication token, which is returned from the login and register methods. Tokens should be considered valid indefinitely, but can expire at any time.</p>
@@ -542,6 +561,157 @@ curl <span class="s2">"https://prod.planneryapp.com/api/items"</span>
 <p><code>GET  https://prod.planneryapp.com/api/plaid_items</code></p>
 <h3 id='request-parameters-5'>Request Parameters</h3>
 <p>none</p>
+<h1 id='plan'>Plan</h1><h2 id='create-a-financial-plan'>Create a financial plan</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
+
+<span class="o">{</span>
+  <span class="s2">"goal"</span> <span class="s2">"emergency_fund"</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE</span>
+
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 2,
+  <span class="s2">"goal"</span>: <span class="s2">"emergency_fund"</span>,
+ <span class="s2">"generated_at"</span>: <span class="s2">"Thu, 29 Nov 2018 01:40:33 UTC +00:00"</span>,
+ <span class="s2">"plan_financial_profile"</span>: <span class="o">{</span>
+    <span class="s2">"id"</span>: 2,
+    <span class="s2">"total_assets_in_dollars"</span>: 42531.76,
+    <span class="s2">"total_liabilities_in_dollars"</span>: 4910.0,
+    <span class="s2">"monthly_cash_flow_in_dollars"</span>: -3465.26,
+    <span class="s2">"average_liability_apr"</span>: 0.0
+ <span class="o">}</span>,
+ <span class="s2">"plan_instructions"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 4,
+      <span class="s2">"instruction_type"</span>: <span class="s2">"open_personal_loan"</span>,
+      <span class="s2">"title"</span>: <span class="s2">"consolidate debt"</span>,
+      <span class="s2">"details"</span>: <span class="s2">"Your monthly payment will go up by </span><span class="nv">$155</span><span class="s2">.00 but you'll pay less interest on your debt"</span>,
+      <span class="s2">"number_of_months"</span>: nil,
+      <span class="s2">"net_worth_increase_in_cents"</span>: 51488,
+      <span class="s2">"net_worth_decrease_explanation"</span>: nil,
+      <span class="s2">"completed"</span>: <span class="nb">false</span>,
+      <span class="s2">"instruction_items"</span>:
+      <span class="o">[{</span>
+        <span class="s2">"section_title"</span>: <span class="s2">"Consolidate Existing Loans"</span>,
+        <span class="s2">"section_items"</span>: <span class="o">[</span><span class="s2">"Move </span><span class="nv">$4</span><span class="s2">,500.00 with 22.0% APR into the new loan"</span><span class="o">]}]</span>,
+      <span class="s2">"recommended_financial_product"</span>: <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"institution_name"</span>: <span class="s2">"Upstart"</span>,
+        <span class="s2">"annual_percentage_rate"</span>: 15.0,
+        <span class="s2">"min_amount_in_cents"</span>: 100000,
+        <span class="s2">"max_amount_in_cents"</span>:2000000,
+        <span class="s2">"sign_up_url"</span>: nil,
+        <span class="s2">"logo_url"</span>: <span class="s2">"http://prod.planneryapp.com/rails/active_storage/blobs/sdf--d57583e0b6f706a4eebaedf57a1e89cec2823a7c/logo_icon.jpg"</span>,
+        <span class="s2">"fees_in_cents"</span>: 0,
+        <span class="s2">"type"</span>: <span class="s2">"PersonalLoan"</span>
+      <span class="o">}</span>,
+      <span class="s2">"other_financial_products"</span>: <span class="o">[]</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+       <span class="s2">"id"</span>: 5,
+       <span class="s2">"instruction_type"</span>: <span class="s2">"reduce_deposits"</span>,
+       <span class="s2">"title"</span>: <span class="s2">"pause monthly transfers of </span><span class="nv">$1</span><span class="s2">,000.00"</span>,
+       <span class="s2">"details"</span>: <span class="s2">"your monthly cash flow is still negative."</span>,
+       <span class="s2">"number_of_months"</span>: nil,
+       <span class="s2">"net_worth_increase_in_cents"</span>: 18062,
+       <span class="s2">"net_worth_decrease_explanation"</span>: nil,
+       <span class="s2">"completed"</span>: <span class="nb">false</span>,
+       <span class="s2">"instruction_items"</span>:
+       <span class="o">[{</span>
+         <span class="s2">"section_title"</span>: <span class="s2">"Pause Transfer"</span>,
+         <span class="s2">"section_items"</span>: <span class="o">[</span><span class="s2">"Stop depositing </span><span class="nv">$1</span><span class="s2">,000.00 per month into Plaid CD"</span><span class="o">]</span>
+       <span class="o">}]</span>,
+       <span class="s2">"recommended_financial_product"</span>: nil,
+       <span class="s2">"other_financial_products"</span>: <span class="o">[]}</span>,
+    <span class="o">{</span>
+       <span class="s2">"id"</span>: 6,
+       <span class="s2">"instruction_type"</span>: <span class="s2">"reduce_spending"</span>,
+       <span class="s2">"title"</span>: <span class="s2">"reduce monthly expenses by </span><span class="nv">$2</span><span class="s2">,821.25"</span>,
+       <span class="s2">"details"</span>: <span class="s2">"Your cash flow is still negative, Find savings by comparing your expenses to others in your area."</span>,
+       <span class="s2">"number_of_months"</span>: nil,
+       <span class="s2">"net_worth_increase_in_cents"</span>: 3476888,
+       <span class="s2">"net_worth_decrease_explanation"</span>: nil,
+       <span class="s2">"completed"</span>: <span class="nb">false</span>,
+       <span class="s2">"instruction_items"</span>: <span class="o">[]</span>,
+       <span class="s2">"recommended_financial_product"</span>: nil,
+       <span class="s2">"other_financial_products"</span>: <span class="o">[]</span>
+     <span class="o">}</span>,
+   <span class="o">{</span>
+       <span class="s2">"id"</span>: 7,
+       <span class="s2">"instruction_type"</span>: <span class="s2">"open_savings"</span>,
+       <span class="s2">"title"</span>: <span class="s2">"set up your emergency fund"</span>,
+       <span class="s2">"details"</span>: <span class="s2">"recommended emergency fund is to cover 3 months of expenses. You can hit your goal of </span><span class="nv">$3</span><span class="s2">,612.03 by January 2018."</span>,
+       <span class="s2">"number_of_months"</span>: 10,
+       <span class="s2">"net_worth_increase_in_cents"</span>: -37030,
+       <span class="s2">"net_worth_decrease_explanation"</span>: nil,
+       <span class="s2">"completed"</span>: <span class="nb">false</span>,
+       <span class="s2">"instruction_items"</span>:
+       <span class="o">[{</span>
+         <span class="s2">"section_title"</span>: <span class="s2">"Open New Savings Account"</span>,
+         <span class="s2">"section_items"</span>:
+          <span class="o">[</span><span class="s2">"It is best to save your emergency fund in a separate account. We found an account that offers an APR of 2.1%"</span><span class="o">]}</span>,
+        <span class="o">{</span><span class="s2">"section_title"</span>: <span class="s2">"Set Up Direct Deposit"</span>,
+         <span class="s2">"section_items"</span>: <span class="o">[</span><span class="s2">"Set up a direct deposit of -370.0 from your paycheck or your primary checking account. "</span><span class="o">]</span>
+       <span class="o">}]</span>,
+       <span class="s2">"recommended_financial_product"</span>: <span class="o">{</span>
+         <span class="s2">"id"</span>: 3,
+         <span class="s2">"institution_name"</span>: <span class="s2">"American Express"</span>,
+         <span class="s2">"annual_percentage_rate"</span>: 2.1,
+         <span class="s2">"min_amount_in_cents"</span>: 500000,
+         <span class="s2">"max_amount_in_cents"</span>: 2000000,
+         <span class="s2">"sign_up_url"</span>: <span class="s2">"https://www.amex.com/sign-me-up"</span>,
+         <span class="s2">"logo_url"</span>: <span class="s2">"http://prod.planneryapp.com/rails/active_storage/blobs/sdf--d57583e0b6f706a4eebaedf57a1e89cec2823a7c/logo_icon.jpg"</span>,
+         <span class="s2">"fees_in_cents"</span>: 0,
+         <span class="s2">"type"</span>: <span class="s2">"HighYieldSaving"</span><span class="o">}</span>,
+       <span class="s2">"other_financial_products"</span>: <span class="o">[{</span>
+         <span class="s2">"id"</span>: 2,
+         <span class="s2">"institution_name"</span>: <span class="s2">"Marcus"</span>,
+         <span class="s2">"annual_percentage_rate"</span>: 2.0,
+         <span class="s2">"min_amount_in_cents"</span>: 20000,
+         <span class="s2">"max_amount_in_cents"</span>: 100000,
+         <span class="s2">"sign_up_url"</span>: <span class="s2">"https://www.marcus.com/sign-up"</span>,
+         <span class="s2">"logo_url"</span>: nil,
+         <span class="s2">"fees_in_cents"</span>: 0,
+         <span class="s2">"type"</span>: <span class="s2">"HighYieldSaving"</span>
+        <span class="o">}]</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<p>This endpoint creates a financial plan along with step by step instructions.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST https://prod.planneryapp.com/api/plans</code></p>
+<h3 id='request-parameters-6'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>goal</td>
+<td>true</td>
+<td>The user&#39;s financial goal (e.g. reduce_debt, emergency_fund)</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-user-39-s-current-financial-plan'>Get a user&#39;s current financial plan</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE</span>
+
+same response as plan creation
+</code></pre>
+<p>This endpoint gets the last plan created for that user.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://prod.planneryapp.com/api/plans/current</code></p>
+<h3 id='request-parameters-7'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<p>none</p>
 <h1 id='setting'>Setting</h1><h2 id='retrieve-settings-for-the-clients'>Retrieve settings for the clients</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE FOR AN AUTHENTICATED USER</span>
 
 <span class="o">{</span><span class="s2">"authenticated"</span>: <span class="nb">true</span>,
@@ -583,9 +753,9 @@ curl <span class="s2">"https://prod.planneryapp.com/api/items"</span>
 <p>This endpoint should be requested on each app load. The response includes the
 user attributes and whether or not their auth token is valid. If &#39;authenticated&#39; is false,
 then the client should force the login screen.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://prod.planneryapp.com/api/settings</code></p>
-<h3 id='request-parameters-6'>Request Parameters</h3>
+<h3 id='request-parameters-8'>Request Parameters</h3>
 <p>none</p>
 <h1 id='userprofile'>UserProfile</h1><h2 id='update-user-attributes'>Update user attributes</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
 
@@ -607,9 +777,9 @@ then the client should force the login screen.</p>
 </code></pre>
 <p>This endpoint allows us to save additional information about a user. These
 attributes will be editable from the settings page.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>PUT https://prod.planneryapp.com/api/user_profile</code></p>
-<h3 id='request-parameters-7'>Request Parameters</h3>
+<h3 id='request-parameters-9'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -638,6 +808,113 @@ attributes will be editable from the settings page.</p>
 <td>The 401k matching offered by employer</td>
 </tr>
 </tbody></table>
+<h1 id='useaccounts'>UseAccounts</h1><h2 id='create-a-new-user_account'>Create a new user_account</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
+
+<span class="o">{</span>
+  <span class="s2">"institution_name"</span>: <span class="s2">"Bank of America"</span>,
+  <span class="s2">"account_type"</span>: <span class="s2">"checkings"</span>,
+  <span class="s2">"current_balance_in_dollars"</span>: 12000,
+  <span class="s2">"monthly_deposit_in_dollars"</span>: 3400,
+  <span class="s2">"monthly_living_expenses_in_dollars"</span>: 1200,
+  <span class="s2">"annual_percentage_rate"</span>: 0.2
+  <span class="s2">"primary"</span>: <span class="nb">true</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE</span>
+
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"institution_name"</span>: <span class="s2">"Bank of America"</span>,
+  <span class="s2">"account_type"</span>: <span class="s2">"checkings"</span>,
+  <span class="s2">"current_balance_in_dollars"</span>: 12000,
+  <span class="s2">"monthly_deposit_in_dollars"</span>: 3400,
+  <span class="s2">"monthly_living_expenses_in_dollars"</span>: 1200,
+  <span class="s2">"annual_percentage_rate"</span>: 0.2
+  <span class="s2">"primary"</span>: <span class="nb">true</span>
+<span class="o">}</span>
+</code></pre>
+<p>This endpoint allows users to manually enter in their account details instead of
+linking their accounts with plaid.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>POST https://prod.planneryapp.com/api/user_accounts</code></p>
+<h3 id='request-parameters-10'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>institution_name</td>
+<td>true</td>
+<td>The name of the financial institution</td>
+</tr>
+<tr>
+<td>account_type</td>
+<td>true</td>
+<td>The account type (checkings, savings, brokerage, 401k, ira, other_asset, credit_card, loan, mortgage, home_equity_line, student_loan, other_liability)</td>
+</tr>
+<tr>
+<td>current_balance_in_dollars</td>
+<td>true</td>
+<td>The current account balance</td>
+</tr>
+<tr>
+<td>limit_balance_in_dollars</td>
+<td>false</td>
+<td>The credit limit</td>
+</tr>
+<tr>
+<td>original_balance_in_dollars</td>
+<td>false</td>
+<td>The original amount (only used for loans)</td>
+</tr>
+<tr>
+<td>monthly_deposit_in_dollars</td>
+<td>false</td>
+<td>Average monthly deposits to account</td>
+</tr>
+<tr>
+<td>monthly_payment_in_dollars</td>
+<td>false</td>
+<td>Average monthly payments to account</td>
+</tr>
+<tr>
+<td>monthly_living_expenses_in_dollars</td>
+<td>false</td>
+<td>Average monthly living expenses charged to account</td>
+</tr>
+<tr>
+<td>monthly_pmi_amount_in_dollars</td>
+<td>false</td>
+<td>Total amount paid for private mortgage insurance</td>
+</tr>
+<tr>
+<td>term_in_months</td>
+<td>false</td>
+<td>The term length in months for a loan</td>
+</tr>
+<tr>
+<td>in_repayment</td>
+<td>false</td>
+<td>Boolean for whether or not a user is in a repayment plan for their student loans</td>
+</tr>
+<tr>
+<td>in_income_repayment_plan</td>
+<td>false</td>
+<td>Boolean for whether or not a user is in an income repayment plan for their student loans</td>
+</tr>
+<tr>
+<td>primary</td>
+<td>false</td>
+<td>If this is their primary checking/savings account</td>
+</tr>
+<tr>
+<td>annual_percentage_rate</td>
+<td>true</td>
+<td>APR for their account</td>
+</tr>
+</tbody></table>
 <h1 id='userrealestate'>UserRealEstate</h1><h2 id='create-a-new-user_real_estate-instance'>Create a new user_real_estate instance</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
 
 <span class="o">{</span>
@@ -661,9 +938,9 @@ attributes will be editable from the settings page.</p>
 </code></pre>
 <p>This endpoint allows users to add real estate holdings. After the user real estate
 instance is created, we then ping zillow to get the current property value (i.e. Zestimate)</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://prod.planneryapp.com/api/user_real_estates</code></p>
-<h3 id='request-parameters-8'>Request Parameters</h3>
+<h3 id='request-parameters-11'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -705,9 +982,9 @@ instance is created, we then ping zillow to get the current property value (i.e.
 <span class="o">}</span>
 </code></pre>
 <p>This allows users to sign up for a waitlist to be notified when we support their desired financial goal.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST https://prod.planneryapp.com/api/waitlist</code></p>
-<h3 id='request-parameters-9'>Request Parameters</h3>
+<h3 id='request-parameters-12'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
