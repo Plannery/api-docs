@@ -260,6 +260,17 @@
               </ul>
           </li>
           <li>
+            <a href="#planinstruction" class="toc-h1 toc-link" data-title="PlanInstruction">PlanInstruction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#show-a-plan-instruction" class="toc-h2 toc-link" data-title="Show a plan instruction">Show a plan instruction</a>
+                  </li>
+                  <li>
+                    <a href="#complete-a-plan-instruction" class="toc-h2 toc-link" data-title="Complete a plan instruction">Complete a plan instruction</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#setting" class="toc-h1 toc-link" data-title="Setting">Setting</a>
               <ul class="toc-list-h2">
                   <li>
@@ -712,6 +723,70 @@ same response as plan creation
 </tbody></table>
 
 <p>none</p>
+<h1 id='planinstruction'>PlanInstruction</h1><h2 id='show-a-plan-instruction'>Show a plan instruction</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
+<span class="o">{}</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE</span>
+
+<span class="o">{</span>
+   <span class="s2">"id"</span>: 12,
+   <span class="s2">"instruction_type"</span>: <span class="s2">"reduce_spending"</span>,
+   <span class="s2">"title"</span>: <span class="s2">"reduce monthly expenses by </span><span class="nv">$2</span><span class="s2">,821.25"</span>,
+   <span class="s2">"details"</span>: <span class="s2">"Your cash flow is still negative, Find savings by comparing your expenses to others in your area."</span>,
+   <span class="s2">"number_of_months"</span>: nil,
+   <span class="s2">"net_worth_increase_in_cents"</span>: 3476888,
+   <span class="s2">"net_worth_decrease_explanation"</span>: nil,
+   <span class="s2">"completed"</span>: <span class="nb">true</span>,
+   <span class="s2">"instruction_items"</span>: <span class="o">[]</span>,
+   <span class="s2">"recommended_financial_product"</span>: nil,
+   <span class="s2">"other_financial_products"</span>: <span class="o">[]</span>
+<span class="o">}</span>,
+</code></pre>
+<p>This endpoint returns a plan instruction</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET https://prod.planneryapp.com/api/plan_instructions/12</code></p>
+<h3 id='request-parameters-8'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<p>none</p>
+<h2 id='complete-a-plan-instruction'>Complete a plan instruction</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
+<span class="o">{}</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE</span>
+
+<span class="o">{</span>
+   <span class="s2">"id"</span>: 12,
+   <span class="s2">"instruction_type"</span>: <span class="s2">"reduce_spending"</span>,
+   <span class="s2">"title"</span>: <span class="s2">"reduce monthly expenses by </span><span class="nv">$2</span><span class="s2">,821.25"</span>,
+   <span class="s2">"details"</span>: <span class="s2">"Your cash flow is still negative, Find savings by comparing your expenses to others in your area."</span>,
+   <span class="s2">"number_of_months"</span>: nil,
+   <span class="s2">"net_worth_increase_in_cents"</span>: 3476888,
+   <span class="s2">"net_worth_decrease_explanation"</span>: nil,
+   <span class="s2">"completed"</span>: <span class="nb">true</span>,
+   <span class="s2">"instruction_items"</span>: <span class="o">[]</span>,
+   <span class="s2">"recommended_financial_product"</span>: nil,
+   <span class="s2">"other_financial_products"</span>: <span class="o">[]</span>
+<span class="o">}</span>,
+</code></pre>
+<p>This allows a user to complete a plan instruction</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>PUT https://prod.planneryapp.com/api/plan_instructions/12/complete</code></p>
+<h3 id='request-parameters-9'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<p>none</p>
 <h1 id='setting'>Setting</h1><h2 id='retrieve-settings-for-the-clients'>Retrieve settings for the clients</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE RESPONSE FOR AN AUTHENTICATED USER</span>
 
 <span class="o">{</span><span class="s2">"authenticated"</span>: <span class="nb">true</span>,
@@ -753,9 +828,9 @@ same response as plan creation
 <p>This endpoint should be requested on each app load. The response includes the
 user attributes and whether or not their auth token is valid. If &#39;authenticated&#39; is false,
 then the client should force the login screen.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://prod.planneryapp.com/api/settings</code></p>
-<h3 id='request-parameters-8'>Request Parameters</h3>
+<h3 id='request-parameters-10'>Request Parameters</h3>
 <p>none</p>
 <h1 id='userprofile'>UserProfile</h1><h2 id='update-user-attributes'>Update user attributes</h2><pre class="highlight shell tab-shell"><code><span class="c"># EXAMPLE REQUEST</span>
 
@@ -777,9 +852,9 @@ then the client should force the login screen.</p>
 </code></pre>
 <p>This endpoint allows us to save additional information about a user. These
 attributes will be editable from the settings page.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>PUT https://prod.planneryapp.com/api/user_profile</code></p>
-<h3 id='request-parameters-9'>Request Parameters</h3>
+<h3 id='request-parameters-11'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -834,9 +909,9 @@ attributes will be editable from the settings page.</p>
 </code></pre>
 <p>This endpoint allows users to manually enter in their account details instead of
 linking their accounts with plaid.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST https://prod.planneryapp.com/api/user_accounts</code></p>
-<h3 id='request-parameters-10'>Request Parameters</h3>
+<h3 id='request-parameters-12'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -938,9 +1013,9 @@ linking their accounts with plaid.</p>
 </code></pre>
 <p>This endpoint allows users to add real estate holdings. After the user real estate
 instance is created, we then ping zillow to get the current property value (i.e. Zestimate)</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST https://prod.planneryapp.com/api/user_real_estates</code></p>
-<h3 id='request-parameters-11'>Request Parameters</h3>
+<h3 id='request-parameters-13'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -982,9 +1057,9 @@ instance is created, we then ping zillow to get the current property value (i.e.
 <span class="o">}</span>
 </code></pre>
 <p>This allows users to sign up for a waitlist to be notified when we support their desired financial goal.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST https://prod.planneryapp.com/api/waitlist</code></p>
-<h3 id='request-parameters-12'>Request Parameters</h3>
+<h3 id='request-parameters-14'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
