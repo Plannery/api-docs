@@ -18,7 +18,7 @@ JSON is the only supported request and response format.
 
 ```shell
 # With curl, supply the credentials with the -u option
-curl "https://prod.planneryapp.com/api/items"
+curl "https://prod.planneryapp.com/api/plans/current"
   -u "todd@packer.com:auth-token"
 ```
 
@@ -285,6 +285,163 @@ This endpoint retrieves all users linked plaid_items (which includes the plaid_a
 
 none
 
+# Plan
+
+## Create a financial plan
+
+```shell
+# EXAMPLE REQUEST
+
+{
+  "goal" "emergency_fund"
+}
+```
+
+```shell
+# EXAMPLE RESPONSE
+
+{
+  "id": 2,
+  "goal": "emergency_fund",
+ "generated_at": "Thu, 29 Nov 2018 01:40:33 UTC +00:00",
+ "plan_financial_profile": {
+    "id": 2,
+    "total_assets_in_dollars": 42531.76,
+    "total_liabilities_in_dollars": 4910.0,
+    "monthly_cash_flow_in_dollars": -3465.26,
+    "average_liability_apr": 0.0
+ },
+ "plan_instructions": [
+    {
+      "id": 4,
+      "instruction_type": "open_personal_loan",
+      "title": "consolidate debt",
+      "details": "Your monthly payment will go up by $155.00 but you'll pay less interest on your debt",
+      "number_of_months": nil,
+      "net_worth_increase_in_cents": 51488,
+      "net_worth_decrease_explanation": nil,
+      "completed": false,
+      "instruction_items":
+      [{
+        "section_title": "Consolidate Existing Loans",
+        "section_items": ["Move $4,500.00 with 22.0% APR into the new loan"]}],
+      "recommended_financial_product": {
+        "id": 1,
+        "institution_name": "Upstart",
+        "annual_percentage_rate": 15.0,
+        "min_amount_in_cents": 100000,
+        "max_amount_in_cents":2000000,
+        "sign_up_url": nil,
+        "logo_url": "http://prod.planneryapp.com/rails/active_storage/blobs/sdf--d57583e0b6f706a4eebaedf57a1e89cec2823a7c/logo_icon.jpg",
+        "fees_in_cents": 0,
+        "type": "PersonalLoan"
+      },
+      "other_financial_products": []
+    },
+    {
+       "id": 5,
+       "instruction_type": "reduce_deposits",
+       "title": "pause monthly transfers of $1,000.00",
+       "details": "your monthly cash flow is still negative.",
+       "number_of_months": nil,
+       "net_worth_increase_in_cents": 18062,
+       "net_worth_decrease_explanation": nil,
+       "completed": false,
+       "instruction_items":
+       [{
+         "section_title": "Pause Transfer",
+         "section_items": ["Stop depositing $1,000.00 per month into Plaid CD"]
+       }],
+       "recommended_financial_product": nil,
+       "other_financial_products": []},
+    {
+       "id": 6,
+       "instruction_type": "reduce_spending",
+       "title": "reduce monthly expenses by $2,821.25",
+       "details": "Your cash flow is still negative, Find savings by comparing your expenses to others in your area.",
+       "number_of_months": nil,
+       "net_worth_increase_in_cents": 3476888,
+       "net_worth_decrease_explanation": nil,
+       "completed": false,
+       "instruction_items": [],
+       "recommended_financial_product": nil,
+       "other_financial_products": []
+     },
+   {
+       "id": 7,
+       "instruction_type": "open_savings",
+       "title": "set up your emergency fund",
+       "details": "recommended emergency fund is to cover 3 months of expenses. You can hit your goal of $3,612.03 by January 2018.",
+       "number_of_months": 10,
+       "net_worth_increase_in_cents": -37030,
+       "net_worth_decrease_explanation": nil,
+       "completed": false,
+       "instruction_items":
+       [{
+         "section_title": "Open New Savings Account",
+         "section_items":
+          ["It is best to save your emergency fund in a separate account. We found an account that offers an APR of 2.1%"]},
+        {"section_title": "Set Up Direct Deposit",
+         "section_items": ["Set up a direct deposit of -370.0 from your paycheck or your primary checking account. "]
+       }],
+       "recommended_financial_product": {
+         "id": 3,
+         "institution_name": "American Express",
+         "annual_percentage_rate": 2.1,
+         "min_amount_in_cents": 500000,
+         "max_amount_in_cents": 2000000,
+         "sign_up_url": "https://www.amex.com/sign-me-up",
+         "logo_url": "http://prod.planneryapp.com/rails/active_storage/blobs/sdf--d57583e0b6f706a4eebaedf57a1e89cec2823a7c/logo_icon.jpg",
+         "fees_in_cents": 0,
+         "type": "HighYieldSaving"},
+       "other_financial_products": [{
+         "id": 2,
+         "institution_name": "Marcus",
+         "annual_percentage_rate": 2.0,
+         "min_amount_in_cents": 20000,
+         "max_amount_in_cents": 100000,
+         "sign_up_url": "https://www.marcus.com/sign-up",
+         "logo_url": nil,
+         "fees_in_cents": 0,
+         "type": "HighYieldSaving"
+        }]
+    }
+  ]
+}
+```
+
+This endpoint creates a financial plan along with step by step instructions.
+
+### HTTP Request
+
+`POST https://prod.planneryapp.com/api/plans`
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+goal | true | The user's financial goal (e.g. reduce_debt, emergency_fund)
+
+## Get a user's current financial plan
+
+```shell
+# EXAMPLE RESPONSE
+
+same response as plan creation
+```
+
+This endpoint gets the last plan created for that user.
+
+### HTTP Request
+
+`GET https://prod.planneryapp.com/api/plans/current`
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+none
+
 # Setting
 
 ## Retrieve settings for the clients
@@ -384,6 +541,64 @@ zip_code | false | The zip code for users that rent.
 gross_income_in_dollars | false | The user's gross yearly income
 retirement_percent_matching | false | The 401k matching offered by employer
 
+# UseAccounts
+
+## Create a new user_account
+
+```shell
+# EXAMPLE REQUEST
+
+{
+  "institution_name": "Bank of America",
+  "account_type": "checkings",
+  "current_balance_in_dollars": 12000,
+  "monthly_deposit_in_dollars": 3400,
+  "monthly_living_expenses_in_dollars": 1200,
+  "annual_percentage_rate": 0.2
+  "primary": true
+}
+```
+
+```shell
+# EXAMPLE RESPONSE
+
+{
+  "id": 1,
+  "institution_name": "Bank of America",
+  "account_type": "checkings",
+  "current_balance_in_dollars": 12000,
+  "monthly_deposit_in_dollars": 3400,
+  "monthly_living_expenses_in_dollars": 1200,
+  "annual_percentage_rate": 0.2
+  "primary": true
+}
+```
+
+This endpoint allows users to manually enter in their account details instead of
+linking their accounts with plaid.
+
+### HTTP Request
+
+`POST https://prod.planneryapp.com/api/user_accounts`
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+institution_name | true | The name of the financial institution
+account_type | true | The account type (checkings, savings, brokerage, 401k, ira, other_asset, credit_card, loan, mortgage, home_equity_line, student_loan, other_liability)
+current_balance_in_dollars | true | The current account balance
+limit_balance_in_dollars | false | The credit limit
+original_balance_in_dollars | false | The original amount (only used for loans)
+monthly_deposit_in_dollars | false | Average monthly deposits to account
+monthly_payment_in_dollars | false | Average monthly payments to account
+monthly_living_expenses_in_dollars | false | Average monthly living expenses charged to account
+monthly_pmi_amount_in_dollars | false | Total amount paid for private mortgage insurance
+term_in_months | false | The term length in months for a loan
+in_repayment | false | Boolean for whether or not a user is in a repayment plan for their student loans
+in_income_repayment_plan | false | Boolean for whether or not a user is in an income repayment plan for their student loans
+primary   | false | If this is their primary checking/savings account
+annual_percentage_rate | true | APR for their account
 
 # UserRealEstate
 
