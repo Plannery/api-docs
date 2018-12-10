@@ -116,6 +116,38 @@ Parameter | Required | Description
 email     | true | The user's email address.
 password | true | The user's password.
 
+# PlaidIncome
+
+## Get plaid estimated income
+
+```shell
+# EXAMPLE REQUEST
+
+{}
+```
+
+```shell
+# EXAMPLE RESPONSE
+
+{
+  "id": 2,
+  "last_year_income_before_tax_in_dollars": 120000,
+  "projected_yearly_income_before_tax_in_dollars": 125000,
+}
+```
+
+This endpoint returns the estimated yearly income for the user.
+
+### HTTP Request
+
+`GET https://prod.planneryapp.com/api/plaid_income`
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+none
+
 # PlaidItem
 
 ## Create a new plaid item
@@ -544,7 +576,8 @@ none
    "save for vacation"],
  "credit_score_options":
   [[300, 550], [550, 649], [650, 699], [700, 749], [750, 850]],
- "terms_of_service_url": "https://www.example.com/terms_of_service"}
+ "linking_accounts_explanation_url": "https://www.planneryapp.com/pages/linking_accounts_explanation",
+ "terms_of_service_url": "https://www.planneryapp.com/pages/terms_of_service"}
 
  # EXAMPLE RESPONSE FOR AN UNAUTHENTICATED USER
  {"authenticated": false,
@@ -559,7 +592,8 @@ none
    "save for vacation"],
  "credit_score_options":
   [[300, 550], [550, 649], [650, 699], [700, 749], [750, 850]],
- "terms_of_service_url": "https://www.example.com/terms_of_service"}
+  "linking_accounts_explanation_url": "https://www.planneryapp.com/pages/linking_accounts_explanation",
+  "terms_of_service_url": "https://www.planneryapp.com/pages/terms_of_service"}
 ```
 
 This endpoint should be requested on each app load. The response includes the
