@@ -636,18 +636,13 @@ curl <span class="s2">"https://prod.planneryapp.com/api/plans/current"</span>
       <span class="s2">"instruction_items"</span>:
       <span class="o">[{</span>
         <span class="s2">"section_title"</span>: <span class="s2">"Consolidate Existing Loans"</span>,
-        <span class="s2">"section_items"</span>: <span class="o">[</span><span class="s2">"Move </span><span class="nv">$4</span><span class="s2">,500.00 with 22.0% APR into the new loan"</span><span class="o">]}]</span>,
-      <span class="s2">"recommended_financial_product"</span>: <span class="o">{</span>
-        <span class="s2">"id"</span>: 1,
-        <span class="s2">"institution_name"</span>: <span class="s2">"Upstart"</span>,
-        <span class="s2">"annual_percentage_rate"</span>: 15.0,
-        <span class="s2">"min_amount_in_cents"</span>: 100000,
-        <span class="s2">"max_amount_in_cents"</span>:2000000,
-        <span class="s2">"sign_up_url"</span>: nil,
-        <span class="s2">"logo_url"</span>: <span class="s2">"http://prod.planneryapp.com/rails/active_storage/blobs/sdf--d57583e0b6f706a4eebaedf57a1e89cec2823a7c/logo_icon.jpg"</span>,
-        <span class="s2">"fees_in_cents"</span>: 0,
-        <span class="s2">"type"</span>: <span class="s2">"PersonalLoan"</span>
-      <span class="o">}</span>,
+        <span class="s2">"section_items"</span>: <span class="o">[{</span>
+          <span class="s2">"title"</span>: <span class="s2">"Move </span><span class="nv">$4</span><span class="s2">,500.00 with 22.0% APR into the new loan"</span>,
+          <span class="s2">"preview_title"</span>: <span class="s2">""</span>,
+          <span class="s2">"sign_up_url"</span>: nil,
+          <span class="s2">"logo_url"</span>: nil
+          <span class="o">}]</span>
+      <span class="o">}]</span>,
       <span class="s2">"other_financial_products"</span>: <span class="o">[]</span>
     <span class="o">}</span>,
     <span class="o">{</span>
@@ -662,9 +657,13 @@ curl <span class="s2">"https://prod.planneryapp.com/api/plans/current"</span>
        <span class="s2">"instruction_items"</span>:
        <span class="o">[{</span>
          <span class="s2">"section_title"</span>: <span class="s2">"Pause Transfer"</span>,
-         <span class="s2">"section_items"</span>: <span class="o">[</span><span class="s2">"Stop depositing </span><span class="nv">$1</span><span class="s2">,000.00 per month into Plaid CD"</span><span class="o">]</span>
+         <span class="s2">"section_items"</span>: <span class="o">[{</span>
+           <span class="s2">"title"</span>: <span class="s2">"Stop depositing </span><span class="nv">$1</span><span class="s2">,000.00 per month into Plaid CD"</span>,
+           <span class="s2">"preview_title"</span>: <span class="s2">""</span>,
+           <span class="s2">"sign_up_url"</span>: nil,
+           <span class="s2">"logo_url"</span>: nil
+           <span class="o">}]</span>
        <span class="o">}]</span>,
-       <span class="s2">"recommended_financial_product"</span>: nil,
        <span class="s2">"other_financial_products"</span>: <span class="o">[]}</span>,
     <span class="o">{</span>
        <span class="s2">"id"</span>: 6,
@@ -676,7 +675,6 @@ curl <span class="s2">"https://prod.planneryapp.com/api/plans/current"</span>
        <span class="s2">"net_worth_decrease_explanation"</span>: nil,
        <span class="s2">"completed"</span>: <span class="nb">false</span>,
        <span class="s2">"instruction_items"</span>: <span class="o">[]</span>,
-       <span class="s2">"recommended_financial_product"</span>: nil,
        <span class="s2">"other_financial_products"</span>: <span class="o">[]</span>
      <span class="o">}</span>,
    <span class="o">{</span>
@@ -692,20 +690,21 @@ curl <span class="s2">"https://prod.planneryapp.com/api/plans/current"</span>
        <span class="o">[{</span>
          <span class="s2">"section_title"</span>: <span class="s2">"Open New Savings Account"</span>,
          <span class="s2">"section_items"</span>:
-          <span class="o">[</span><span class="s2">"It is best to save your emergency fund in a separate account. We found an account that offers an APR of 2.1%"</span><span class="o">]}</span>,
-        <span class="o">{</span><span class="s2">"section_title"</span>: <span class="s2">"Set Up Direct Deposit"</span>,
-         <span class="s2">"section_items"</span>: <span class="o">[</span><span class="s2">"Set up a direct deposit of -370.0 from your paycheck or your primary checking account. "</span><span class="o">]</span>
+         <span class="s2">"section_items"</span>: <span class="o">[{</span>
+           <span class="s2">"title"</span>: <span class="s2">"It is best to save your emergency fund in a separate account. We found an account that offers an APR of 2.1%"</span>,
+           <span class="s2">"preview_title"</span>: <span class="s2">"We found an account that offers an APR of 2.1%"</span>,
+           <span class="s2">"sign_up_url"</span>: <span class="s2">"https://www.amex.com/sign-me-up"</span>,
+           <span class="s2">"logo_url"</span>: <span class="s2">"http://prod.planneryapp.com/rails/active_storage/blobs/sdf--d57583e0b6f706a4eebaedf57a1e89cec2823a7c/logo_icon.jpg"</span>
+           <span class="o">}]</span>,
+        <span class="o">{</span>
+          <span class="s2">"section_title"</span>: <span class="s2">"Set Up Direct Deposit"</span>,
+          <span class="s2">"section_items"</span>: <span class="o">[{</span>
+            <span class="s2">"title"</span>: <span class="s2">"Set up a direct deposit of 370.0 from your paycheck or your primary checking account."</span>,
+            <span class="s2">"preview_title"</span>: nil,
+            <span class="s2">"sign_up_url"</span>: nil,
+            <span class="s2">"logo_url"</span>: nil
+            <span class="o">}]</span>,
        <span class="o">}]</span>,
-       <span class="s2">"recommended_financial_product"</span>: <span class="o">{</span>
-         <span class="s2">"id"</span>: 3,
-         <span class="s2">"institution_name"</span>: <span class="s2">"American Express"</span>,
-         <span class="s2">"annual_percentage_rate"</span>: 2.1,
-         <span class="s2">"min_amount_in_cents"</span>: 500000,
-         <span class="s2">"max_amount_in_cents"</span>: 2000000,
-         <span class="s2">"sign_up_url"</span>: <span class="s2">"https://www.amex.com/sign-me-up"</span>,
-         <span class="s2">"logo_url"</span>: <span class="s2">"http://prod.planneryapp.com/rails/active_storage/blobs/sdf--d57583e0b6f706a4eebaedf57a1e89cec2823a7c/logo_icon.jpg"</span>,
-         <span class="s2">"fees_in_cents"</span>: 0,
-         <span class="s2">"type"</span>: <span class="s2">"HighYieldSaving"</span><span class="o">}</span>,
        <span class="s2">"other_financial_products"</span>: <span class="o">[{</span>
          <span class="s2">"id"</span>: 2,
          <span class="s2">"institution_name"</span>: <span class="s2">"Marcus"</span>,
