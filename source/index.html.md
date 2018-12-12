@@ -356,18 +356,13 @@ none
       "instruction_items":
       [{
         "section_title": "Consolidate Existing Loans",
-        "section_items": ["Move $4,500.00 with 22.0% APR into the new loan"]}],
-      "recommended_financial_product": {
-        "id": 1,
-        "institution_name": "Upstart",
-        "annual_percentage_rate": 15.0,
-        "min_amount_in_cents": 100000,
-        "max_amount_in_cents":2000000,
-        "sign_up_url": nil,
-        "logo_url": "http://prod.planneryapp.com/rails/active_storage/blobs/sdf--d57583e0b6f706a4eebaedf57a1e89cec2823a7c/logo_icon.jpg",
-        "fees_in_cents": 0,
-        "type": "PersonalLoan"
-      },
+        "section_items": [{
+          "title": "Move $4,500.00 with 22.0% APR into the new loan",
+          "preview_title": "",
+          "sign_up_url": nil,
+          "logo_url": nil
+          }]
+      }],
       "other_financial_products": []
     },
     {
@@ -382,9 +377,13 @@ none
        "instruction_items":
        [{
          "section_title": "Pause Transfer",
-         "section_items": ["Stop depositing $1,000.00 per month into Plaid CD"]
+         "section_items": [{
+           "title": "Stop depositing $1,000.00 per month into Plaid CD",
+           "preview_title": "",
+           "sign_up_url": nil,
+           "logo_url": nil
+           }]
        }],
-       "recommended_financial_product": nil,
        "other_financial_products": []},
     {
        "id": 6,
@@ -396,7 +395,6 @@ none
        "net_worth_decrease_explanation": nil,
        "completed": false,
        "instruction_items": [],
-       "recommended_financial_product": nil,
        "other_financial_products": []
      },
    {
@@ -412,20 +410,21 @@ none
        [{
          "section_title": "Open New Savings Account",
          "section_items":
-          ["It is best to save your emergency fund in a separate account. We found an account that offers an APR of 2.1%"]},
-        {"section_title": "Set Up Direct Deposit",
-         "section_items": ["Set up a direct deposit of -370.0 from your paycheck or your primary checking account. "]
+         "section_items": [{
+           "title": "It is best to save your emergency fund in a separate account. We found an account that offers an APR of 2.1%",
+           "preview_title": "We found an account that offers an APR of 2.1%",
+           "sign_up_url": "https://www.amex.com/sign-me-up",
+           "logo_url": "http://prod.planneryapp.com/rails/active_storage/blobs/sdf--d57583e0b6f706a4eebaedf57a1e89cec2823a7c/logo_icon.jpg"
+           }],
+        {
+          "section_title": "Set Up Direct Deposit",
+          "section_items": [{
+            "title": "Set up a direct deposit of 370.0 from your paycheck or your primary checking account.",
+            "preview_title": nil,
+            "sign_up_url": nil,
+            "logo_url": nil
+            }],
        }],
-       "recommended_financial_product": {
-         "id": 3,
-         "institution_name": "American Express",
-         "annual_percentage_rate": 2.1,
-         "min_amount_in_cents": 500000,
-         "max_amount_in_cents": 2000000,
-         "sign_up_url": "https://www.amex.com/sign-me-up",
-         "logo_url": "http://prod.planneryapp.com/rails/active_storage/blobs/sdf--d57583e0b6f706a4eebaedf57a1e89cec2823a7c/logo_icon.jpg",
-         "fees_in_cents": 0,
-         "type": "HighYieldSaving"},
        "other_financial_products": [{
          "id": 2,
          "institution_name": "Marcus",
