@@ -352,6 +352,7 @@ none
       "number_of_months": nil,
       "net_worth_increase_in_cents": 51488,
       "net_worth_decrease_explanation": nil,
+      "living_expenses": nil,
       "completed": false,
       "instruction_items":
       [{
@@ -373,6 +374,7 @@ none
        "number_of_months": nil,
        "net_worth_increase_in_cents": 18062,
        "net_worth_decrease_explanation": nil,
+       "living_expenses": nil,
        "completed": false,
        "instruction_items":
        [{
@@ -393,6 +395,20 @@ none
        "number_of_months": nil,
        "net_worth_increase_in_cents": 3476888,
        "net_worth_decrease_explanation": nil,
+       "living_expenses": {
+         "housing_in_dollars": 1200.0,
+         "groceries_in_dollars": 99.0,
+         "entertainment_in_dollars": 0.0,
+         "dining_in_dollars": 1101.51,
+         "utilities_in_dollars": 0.0,
+         "fitness_in_dollars": 78.5,
+         "travel_in_dollars": 11.73,
+         "shopping_in_dollars": 500.0,
+         "insurance_in_dollars": 25.0,
+         "fees_in_dollars": 10.0,
+         "community_in_dollars": 42.0,
+         "health_care_in_dollars": 120.0
+       },
        "completed": false,
        "instruction_items": [],
        "other_financial_products": []
@@ -405,6 +421,7 @@ none
        "number_of_months": 10,
        "net_worth_increase_in_cents": -37030,
        "net_worth_decrease_explanation": nil,
+       "living_expenses": nil,
        "completed": false,
        "instruction_items":
        [{
