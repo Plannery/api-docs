@@ -592,6 +592,7 @@ none
    "save for vacation"],
  "credit_score_options":
   [[300, 550], [550, 649], [650, 699], [700, 749], [750, 850]],
+ "app_share_url": "https://www.planneryapp.com/share",
  "linking_accounts_explanation_url": "https://www.planneryapp.com/pages/linking_accounts_explanation",
  "terms_of_service_url": "https://www.planneryapp.com/pages/terms_of_service"}
 
@@ -608,6 +609,7 @@ none
    "save for vacation"],
  "credit_score_options":
   [[300, 550], [550, 649], [650, 699], [700, 749], [750, 850]],
+  "app_share_url": "https://www.planneryapp.com/share",
   "linking_accounts_explanation_url": "https://www.planneryapp.com/pages/linking_accounts_explanation",
   "terms_of_service_url": "https://www.planneryapp.com/pages/terms_of_service"}
 ```
